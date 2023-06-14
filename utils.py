@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 def read_file():
-    with open('data_samples/idIoTagent_2.csv', 'r') as file:
+    with open('data_samples/idIoTagent_3.csv', 'r') as file:
         result = []
         csvreader = csv.reader(file)
         for row in csvreader:
@@ -19,8 +19,9 @@ def read_file():
 def get_row(data, param):
     result = []
     for row in data:
-        if row[2].strip() == param:
-            result.append((convert_to_date(row[5].strip()), float(row[3].strip())))
+        if len(row) > 0:
+            if row[2].strip() == param:
+                result.append((convert_to_date(row[5].strip()), float(row[3].strip())))
     return result
 
 
