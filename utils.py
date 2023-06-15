@@ -1,10 +1,9 @@
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
 import numpy as np
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
-
 
 def read_file():
     with open('data_samples/idIoTagent_3.csv', 'r') as file:
@@ -21,7 +20,7 @@ def get_row(data, param):
     for row in data:
         if len(row) > 0:
             if row[2].strip() == param:
-                result.append((convert_to_date(row[5].strip()), float(row[3].strip())))
+                result.append((convert_to_date(row[5].strip(), row[7]), float(row[3].strip())))
     return result
 
 
@@ -31,34 +30,43 @@ def get_value(param):
     return temp
 
 
-def get_max(data):
-    res = max(data, key=lambda x: x[1])[1]
+def get_max(data, from_date=None, to_date=None):
+    values = filter_data(data, from_date, to_date)
+    if len(values) == 0: return 0
+    res = max(values)
     return res
 
 
-def get_min(data):
-    res = min(data, key=lambda x: x[1])[1]
+def get_min(data, from_date=None, to_date=None):
+    values = filter_data(data, from_date, to_date)
+    if len(values) == 0: return 0
+    res = min(values)
     return res
 
 
-def get_avg(data):
-    values = [temp for _, temp in data]
-    return sum(values) / len(values)
-
-
-def get_mean(data):
-    values = [temp for _, temp in data]
+def get_mean(data, from_date=None, to_date=None):
+    values = filter_data(data, from_date, to_date)
+    if len(values) == 0: return 0
     return np.mean(values)
 
 
-def get_var(data):
-    values = [temp for _, temp in data]
+def get_var(data, from_date=None, to_date=None):
+    values = filter_data(data, from_date, to_date)
+    if len(values) == 0: return 0
     return np.var(values)
 
 
-def convert_to_date(time_string):
-    time_format = "%H:%M:%S"
-    datetime_object = datetime.strptime(time_string, time_format)
+def filter_data(data, from_date, to_date):
+    if from_date and to_date:
+        filtered_values = [value for dt, value in data if from_date <= dt <= to_date]
+        return filtered_values
+    return [value for _, value in data]
+
+
+def convert_to_date(time_string, date_part):
+    time_format = "%Y-%m-%dT%H:%M:%S"
+    complete_date = f"2023-06-{date_part.split('/')[0].strip()}T{time_string}"
+    datetime_object = datetime.strptime(complete_date, time_format)
     return datetime_object
 
 
