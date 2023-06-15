@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
+import scipy.stats as st
 
 def read_file():
     with open('data_samples/idIoTagent_3.csv', 'r') as file:
@@ -50,6 +51,11 @@ def get_mean(data, from_date=None, to_date=None):
     return np.mean(values)
 
 
+def get_ci(data, from_date=None, to_date=None):
+    values = filter_data(data, from_date, to_date)
+    return st.t.interval(alpha=0.95, df=len(values)-1, loc=np.mean(values), scale=st.sem(values)) 
+
+
 def get_var(data, from_date=None, to_date=None):
     values = filter_data(data, from_date, to_date)
     if len(values) == 0: return 0
@@ -77,3 +83,14 @@ def plot(data, param):
     plt.ylabel("Frequency")
     plt.title(f"{param} Histogram")
     plt.show()
+
+
+def temp_changes(data):
+    dramatic_changes = []
+    for i in range(1, len(data)):
+        current_datetime, current_temp = data[i]
+        prev_datetime, prev_temp = data[i-1]
+        temp_difference = abs(current_temp - prev_temp)
+        if temp_difference >= 1.0:
+            dramatic_changes.append(current_datetime)
+    return dramatic_changes

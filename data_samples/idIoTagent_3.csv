@@ -7494,4 +7494,6 @@ userid, idIoTagent, light, 612.0967741935484, sample_timestamp, 16:06:50, receiv
 userid, idIoTagent, light, 607.2560975609756, sample_timestamp, 16:06:54, received timestamp, 14/13:07:03, Message length, 313
 userid, idIoTagent, light, 606.5686274509806, sample_timestamp, 16:06:58, received timestamp, 14/13:07:03, Message length, 313
 userid, idIoTagent, light, 603.2786885245902, sample_timestamp, 16:07:03, received timestamp, 14/13:07:03, Message length, 313
+userid, idIoTagent, light, 200, sample_timestamp, 16:00:00, received timestamp, 15/16:00:00, Message length, 313
+userid, idIoTagent, light, 300, sample_timestamp, 16:00:00, received timestamp, 15/16:00:00, Message length, 313
 

@@ -4,7 +4,7 @@ temp = get_value("temp")
 quality = get_value("quality")
 light = get_value("light")
 
-print(temp)
+print(light)
 
 print("temp max: ", get_max(temp))
 print("quality max: ", get_max(quality))
@@ -15,7 +15,7 @@ print("light max: ", get_max(light))
 # print("light min: ", get_min(light))
 
 print("temp mean: ", get_mean(temp, datetime.now() - timedelta(hours=21), datetime.now()))
-print("quality mean: ", get_mean(temp, datetime.now() - timedelta(hours=21), datetime.now()))
+print("quality mean: ", get_mean(quality, datetime.now() - timedelta(hours=21), datetime.now()))
 print("light mean: ", get_mean(light))
 
 print("temp max in last hour: ", get_max(temp, datetime.now()-timedelta(hours=1), datetime.now()))
@@ -26,9 +26,13 @@ print("quality max in last hour: ", get_max(quality, datetime.now()-timedelta(ho
 print("quality min in last hour: ", get_min(quality, datetime.now()-timedelta(hours=1), datetime.now()))
 print("quality avg in last hour: ", get_mean(quality, datetime.now()-timedelta(hours=1), datetime.now()))
 
-print("light max in last hour: ", get_max(light, datetime.now()-timedelta(hours=1), datetime.now()))
-print("light min in last hour: ", get_min(light, datetime.now()-timedelta(hours=1), datetime.now()))
-print("light avg in last hour: ", get_mean(light, datetime.now()-timedelta(hours=1), datetime.now()))
+print("light max in last hour: ", get_max(light, datetime.now()-timedelta(days=1), datetime.now()))
+print("light min in last hour: ", get_min(light, datetime.now()-timedelta(days=1), datetime.now()))
+print("light avg in last hour: ", get_mean(light, datetime.now()-timedelta(days=1), datetime.now()))
+
+print("light ci in last hour: ", get_ci(light, datetime.now()-timedelta(days=1), datetime.now()))
+
+print("temperature changes: ", temp_changes(temp))
 
 # print("temp var: ", get_var(temp))
 # print("quality var: ", get_var(quality))
