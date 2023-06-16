@@ -1,4 +1,4 @@
-# idIoTagent
+# idIoTagent Project
 
 In the Oulu Ubicomp Summer School 2023 project, we successfully developed an innovative and compact IoT module based on the Raspberry Pi platform. This module is designed to efficiently capture and transmit crucial environmental data, including light intensity, air quality, and temperature.
 
