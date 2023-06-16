@@ -56,9 +56,9 @@ def go_man_go():
     # plot(quality, "Quality")
     # plot(light, "light")
 
-    # plot_series(temp, "Temperature")
-    # plot_series(light, "Light")
-    # plot_series(quality, "Quality")
+    plot_series(temp, "Temperature")
+    plot_series(light, "Light")
+    plot_series(quality, "Quality")
 
     start_date = datetime(2023, 6, 16, 10, 0)
     first_hour = datetime(2023, 6, 16, 11, 0)
