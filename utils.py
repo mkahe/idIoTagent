@@ -8,7 +8,7 @@ import scipy.stats as st
 from scipy.signal import savgol_filter
 
 def read_file():
-    with open('data_samples/idIoTagent_5.csv', 'r') as file:
+    with open('data_samples/idIoTagent_6.csv', 'r') as file:
         result = []
         csvreader = csv.reader(file)
         for row in csvreader:
@@ -123,7 +123,7 @@ def get_changes(data, thresh):
 
 def apply_filter(data):
     values = [value for _, value in data]
-    y_filtered = savgol_filter(values, window_length = 200, polyorder = 2)
+    y_filtered = savgol_filter(values, window_length = 100, polyorder = 2)
     return y_filtered
 
 def classify_quality(data, from_date=None, to_date=None):
@@ -144,5 +144,6 @@ def quality_changes(data):
     result = []
     for i in range(len(data)):
         result.append((data[i][0], classified[i]))
+    
     return get_changes(result, 100)
     

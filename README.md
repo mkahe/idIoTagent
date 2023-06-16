@@ -11,3 +11,16 @@ For running the code, and analyse the data captured from the sensors, you need t
 ```
 python3 analyse.py
 ```
+
+## Methodologies
+
+### Savitzky Filter
+The apply_filter method implemented in this project applies a data smoothing technique known as the Savitzky-Golay filter to the air quality data. Data smoothing plays a vital role in removing noise and capturing underlying trends and patterns in time series data.
+
+The Savitzky-Golay filter, is a widely used digital filter that provides effective smoothing by fitting a local polynomial regression model to the data. Next, the Savitzky-Golay filter is applied to the data using the savgol_filter function. The function takes parameters window_length and polyorder, which determine the characteristics of the filter. The window_length parameter specifies the size of the window or the number of data points considered for each local regression. A larger window length allows capturing broader trends but may smooth out rapid changes. A higher polynomial order captures more complex trends but may introduce artifacts.
+
+![alt text](/resources/air-quality.png)
+
+After applyting the filter the data will be in this shape.
+
+![filteration](/resources/filteration.png)

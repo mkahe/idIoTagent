@@ -60,29 +60,29 @@ def go_man_go():
     plot_series(light, "Light")
     plot_series(quality, "Quality")
 
-    start_date = datetime(2023, 6, 16, 10, 0)
-    first_hour = datetime(2023, 6, 16, 11, 0)
-    second_hour = datetime(2023, 6, 16, 12, 0)
+    start_date = datetime(2023, 6, 16, 17, 4)
+    first_hour = datetime(2023, 6, 16, 17, 55)
+    second_hour = datetime(2023, 6, 16, 17, 55)
 
     print("TASK 1:")
     print("   Temperature 1st hour")
     print("      Mean ", round(get_mean(temp, start_date, first_hour), 3))
     print(f"      CI [{round(get_ci(temp, start_date, first_hour)[0], 3)}, {round(get_ci(temp, start_date, first_hour)[1], 3)}]")
-    print("   Temperature 2nd hour")
-    print("      Mean ", round(get_mean(temp, first_hour, second_hour), 3))
-    print(f"      CI [{round(get_ci(temp, first_hour, second_hour)[0], 3)}, {round(get_ci(temp, first_hour, second_hour)[1], 3)}]")
+    # print("   Temperature 2nd hour")
+    # print("      Mean ", round(get_mean(temp, first_hour, second_hour), 3))
+    # print(f"      CI [{round(get_ci(temp, first_hour, second_hour)[0], 3)}, {round(get_ci(temp, first_hour, second_hour)[1], 3)}]")
 
     print("TASK 2: Maximum Temperature = ", get_max(temp, start_date, second_hour))
 
     print("TASK 4: Air quality:")
     print("      Mean ", round(get_mean(quality, start_date, second_hour), 3))
-    print(f"      CI [{round(get_ci(quality, start_date, second_hour)[0], 3)}, {round(get_ci(quality, start_date, first_hour)[1], 3)}]")
+    print(f"      CI [{round(get_ci(quality, start_date, second_hour)[0], 3)}, {round(get_ci(quality, start_date, second_hour)[1], 3)}]")
 
     print("TASK 5: Worst air quality ", get_max(quality, start_date, second_hour)) # TODO
 
     print("TASK 6: Light ")
     print("      Mean ", round(get_mean(light, start_date, second_hour), 3))
-    print(f"      CI [{round(get_ci(light, start_date, second_hour)[0], 3)}, {round(get_ci(light, start_date, first_hour)[1], 3)}]")
+    print(f"      CI [{round(get_ci(light, start_date, second_hour)[0], 3)}, {round(get_ci(light, start_date, second_hour)[1], 3)}]")
 
     print(f"Total amoun of transmitted data is {round(get_data_size(start_date, second_hour), 2)} bytes")
     # print(f"Total execution time of additional algorithms is {100} bytes")
