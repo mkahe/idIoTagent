@@ -24,3 +24,7 @@ The Savitzky-Golay filter, is a widely used digital filter that provides effecti
 After applyting the filter the data will be in this shape.
 
 ![filteration](/resources/filteration.png)
+
+# Running the client
+
+Go to client file, and put run the `publisher.py` in Raspbery Pi 3.
